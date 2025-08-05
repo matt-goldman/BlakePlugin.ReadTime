@@ -4,10 +4,33 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    
+    <!-- NuGet Package Properties -->
+    <PackageId>BlakePlugin.ReadTime</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Title>Blake ReadTime Plugin</Title>
+    <Authors>Matt Goldman</Authors>
+    <Description>A Blake plugin that calculates estimated reading time for content based on 200 words per minute reading speed</Description>
+    <PackageTags>blake;plugin;readtime;static-site-generator;markdown</PackageTags>
+    <PackageProjectUrl>https://github.com/matt-goldman/BlakePlugin.ReadTime</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/matt-goldman/BlakePlugin.ReadTime</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Copyright>Copyright © Matt Goldman 2025</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Blake.BuildTools" Version="1.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
