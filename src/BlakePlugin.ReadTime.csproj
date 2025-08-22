@@ -20,13 +20,17 @@
     <Copyright>Copyright © Matt Goldman 2025</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Blake.BuildTools" Version="1.0.12" />
   </ItemGroup>
+
+  
+	<ItemGroup>
+		<None Include="..\assets\icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE" Pack="true" PackagePath="\" />
