@@ -25,6 +25,12 @@ Blake automatically discovers plugins added to your project, and runs them durin
 blake bake
 ```
 
+Specify your own words per minutes:
+
+```bash
+blake bake --readtine:wpm=500
+```
+
 The plugin will automatically process all markdown pages during the build and add a `readTimeMinutes` metadata property to each page.
 
 ## Accessing Reading Time
@@ -42,9 +48,10 @@ The plugin:
 
 1. Runs after the bake process (`AfterBakeAsync`)
 2. Counts words in each markdown page using regex pattern `\b\w+\b`
-3. Calculates reading time using 200 words per minute (approximate adult reading average)
-4. Rounds up to the nearest minute
-5. Adds the result to the page metadata
+3. Calculates reading time using 200 words per minute by default (approximate adult reading average)
+4. Uses user-supplied WPM via CLI arguments, if present
+5. Rounds up to the nearest minute
+6. Adds the result to the page metadata
 
 ## License
 

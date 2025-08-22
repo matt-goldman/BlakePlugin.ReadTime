@@ -7,7 +7,7 @@
     
     <!-- NuGet Package Properties -->
     <PackageId>BlakePlugin.ReadTime</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <Title>Blake ReadTime Plugin</Title>
     <Authors>Matt Goldman</Authors>
     <Description>A Blake plugin that calculates estimated reading time for content based on 200 words per minute reading speed</Description>
