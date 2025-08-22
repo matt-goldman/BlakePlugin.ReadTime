@@ -15,6 +15,26 @@ public class Plugin : IBlakePlugin
     {
         logger?.LogDebug("BeforeBakeAsync called in ReadTime plugin.");
 
+        int wpm = WORDS_CORRECT_PER_MINUTE;
+
+        // check arguments for readtime:wpm
+        if (context.Arguments.Any(arg => arg.StartsWith("--readtime:wpm=", StringComparison.OrdinalIgnoreCase)))
+        {
+            var wpmArg = context.Arguments.FirstOrDefault(arg => arg.StartsWith("--readtime:wpm=", StringComparison.OrdinalIgnoreCase));
+            if (wpmArg != null)
+            {
+                var wpmValue = wpmArg.Split('=')[1];
+                if (int.TryParse(wpmValue, out var wpmVal))
+                {
+                    wpm = wpmVal;
+                }
+                else
+                {
+                    logger?.LogWarning("Invalid read time words per minute value: {value}. Using default {defaultWPM}.", wpmValue, WORDS_CORRECT_PER_MINUTE);
+                }
+            }
+        }
+
         foreach (var page in context.GeneratedPages)
         {
             var mdPage = context.MarkdownPages.FirstOrDefault(p => p.Slug == page.Page.Slug);
@@ -26,7 +46,7 @@ public class Plugin : IBlakePlugin
             }
 
             var wordcount = Regex.Matches(mdPage.RawMarkdown, @"\b\w+\b").Count;
-            var readTime = (int)Math.Ceiling(wordcount / (double)WORDS_CORRECT_PER_MINUTE);
+            var readTime = (int)Math.Ceiling(wordcount / (double)wpm);
 
             // add read time to metadata
             page.Page.Metadata["readTimeMinutes"] = readTime.ToString();
